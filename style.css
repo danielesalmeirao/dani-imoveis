@@ -75,4 +75,42 @@ footer {
   font-size: 12px;
   color: #777;
 }
+/* ===== BOTÕES COM ALTERNÂNCIA DINÂMICA DE CORES ===== */
+
+:root {
+  --gold-1: #C9A24D;
+  --gold-2: #D4AF37;
+  --gold-3: #B8962E;
+  --gold-4: #E6C76A;
+}
+
+.button,
+a.button,
+.link-button {
+  transition: background-color 0.4s ease, transform 0.2s ease;
+}
+
+/* efeito ao clicar */
+.button:active,
+a.button:active,
+.link-button:active {
+  background-color: var(--active-color);
+  transform: scale(0.97);
+}
+script.js
+const colors = [
+  "#C9A24D",
+  "#D4AF37",
+  "#B8962E",
+  "#E6C76A"
+];
+
+let index = 0;
+
+document.querySelectorAll(".button, a.button, .link-button").forEach(btn => {
+  btn.addEventListener("click", () => {
+    btn.style.setProperty("--active-color", colors[index]);
+    index = (index + 1) % colors.length;
+  });
+});
 
